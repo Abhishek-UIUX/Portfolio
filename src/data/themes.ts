@@ -139,5 +139,5 @@ export function getThemeById(id: string): ThemeColors | undefined {
 }
 
 export function getDefaultTheme(): ThemeColors {
-  return themes[0]; // Earthy Olive as default
+  return themes[5]; // Sunset Ember as default
 }
