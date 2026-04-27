@@ -225,15 +225,15 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="mb-2"
         >
-          <h1 className="font-display font-bold leading-none tracking-tight">
+          <h1 className="font-display font-bold leading-tight tracking-tight">
             <span
-              className="block text-5xl sm:text-6xl md:text-7xl xl:text-8xl"
+              className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
               style={{ color: "var(--text-primary)" }}
             >
               Abhishek
             </span>
             <span
-              className="block text-5xl sm:text-6xl md:text-7xl xl:text-8xl gradient-text"
+              className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl gradient-text mt-1"
             >
               Jaiswar
             </span>
