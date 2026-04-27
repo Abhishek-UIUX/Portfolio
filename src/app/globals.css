@@ -1,26 +1,177 @@
 @import "tailwindcss";
 
+/* ── Professional Theme System with Semantic Color Variables ── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Raw theme colors - set dynamically by ThemeProvider */
+  --theme-background: #283618;
+  --theme-surface: #606c38;
+  --theme-primary: #dda15e;
+  --theme-secondary: #bc6c25;
+  --theme-accent: #fefae0;
+
+  /* Semantic application colors - computed from theme */
+  --bg-base: var(--theme-background);
+  --bg-surface: var(--theme-surface);
+  --bg-card: var(--theme-surface);
+  --border: color-mix(in srgb, var(--theme-accent) 15%, transparent);
+  --border-hover: var(--theme-primary);
+  --accent-main: var(--theme-primary);
+  --text-primary: var(--theme-accent);
+  --text-secondary: color-mix(in srgb, var(--theme-accent) 80%, transparent);
+  --text-muted: color-mix(in srgb, var(--theme-accent) 50%, transparent);
+  --nav-bg: color-mix(in srgb, var(--theme-background) 95%, transparent);
+  --loader-bg: var(--theme-background);
+
+  /* Legacy variables for backward compatibility */
+  --accent-orange: var(--theme-primary);
+  --accent-blue: var(--theme-secondary);
+  --accent-violet: var(--theme-primary);
+  --accent-cyan: var(--theme-secondary);
+  --accent-coral: var(--theme-primary);
+  --accent-green: var(--theme-primary);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  * { box-sizing: border-box; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-base);
+    transition: background-color 0.3s ease;
   }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-family: "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--accent-main) 30%, transparent);
+    color: var(--text-primary);
+  }
+
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg-base); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--theme-surface);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--accent-main); }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .font-display { font-family: "Space Grotesk", system-ui, sans-serif; }
+  .font-mono-custom { font-family: "JetBrains Mono", "Courier New", monospace; }
+
+  /* ── Gradient text — theme-aware ── */
+  .gradient-text {
+    background: linear-gradient(135deg, var(--theme-highlight) 0%, var(--theme-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  [data-mode="light"] .gradient-text {
+    background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-base) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-coral { @extend .gradient-text; }
+  .gradient-text-pink  { @extend .gradient-text; }
+
+  /* ── Card hover glow — theme-aware ── */
+  .card-glow {
+    transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .card-glow:hover,
+  .card-glow-cyan:hover,
+  .card-glow-green:hover,
+  .card-glow-coral:hover {
+    box-shadow: 0 0 0 1px var(--accent-main), 0 8px 32px color-mix(in srgb, var(--accent-main) 15%, transparent);
+    border-color: var(--accent-main) !important;
+    transform: translateY(-2px);
+  }
+
+  /* ── Accent top stripe for featured cards ── */
+  .card-featured {
+    border-top: 3px solid var(--accent-main) !important;
+  }
+
+  /* ── Glass card (light mode) ── */
+  .glass-card {
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(12px);
+  }
+  [data-mode="light"] .glass-card {
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  }
+
+  /* ── Dot grid ── */
+  .grid-dot-bg {
+    background-image: radial-gradient(circle, color-mix(in srgb, var(--accent-main) 12%, transparent) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  [data-mode="light"] .grid-dot-bg {
+    background-image: radial-gradient(circle, color-mix(in srgb, var(--theme-primary) 8%, transparent) 1px, transparent 1px);
+  }
+
+  /* ── Terminal cursor ── */
+  .terminal-cursor::after {
+    content: "▋";
+    animation: blink 1s step-start infinite;
+    color: var(--accent-main);
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* ── Accent underline ── */
+  .orange-underline {
+    position: relative;
+    display: inline-block;
+  }
+  .orange-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent-main);
+    border-radius: 2px;
+  }
+
+  /* ── Theme transition ── */
+  .theme-transition {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  }
+
+  @keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position:  200% 0; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-6px); }
+  }
+
+  .float-anim { animation: float 3s ease-in-out infinite; }
+
+  /* ── Neon glow ── */
+  .neon-orange {
+    text-shadow: 0 0 20px color-mix(in srgb, var(--accent-main) 70%, transparent), 
+                 0 0 40px color-mix(in srgb, var(--accent-main) 35%, transparent);
+  }
 }

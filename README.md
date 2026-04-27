@@ -1,5 +1,34 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## ✨ Features
+
+### 🎨 Multi-Theme System
+This portfolio includes a professional multi-theme system with **10 carefully curated color themes**:
+
+- **10 Professional Themes** - From Earthy Olive to Nautical Red
+- **Theme Selector** - Easy-to-use dropdown with visual previews
+- **Theme Lock** - Lock your favorite theme to prevent accidental changes
+- **Dark/Light Mode** - Each theme supports both modes
+- **Persistent Settings** - Your preferences are saved across sessions
+- **Smooth Transitions** - Polished animations and color transitions
+
+**Quick Access:**
+- Click the palette icon (🎨) in the navbar to change themes
+- Visit `/themes-showcase` to see all themes at once
+- See `THEMES.md` for complete documentation
+
+### 🎯 Available Themes
+1. Earthy Olive - Natural, warm earth tones
+2. Midnight Crimson - Bold, dramatic contrast
+3. Sage Forest - Calming, nature-inspired greens
+4. Ocean Steel - Professional, corporate blues
+5. Cyber Neon - Modern, tech-forward palette
+6. Sunset Ember - Warm, inviting oranges
+7. Mint Serenity - Fresh, peaceful pastels
+8. Slate Coral - Balanced, contemporary design
+9. Desert Warmth - Vibrant, energetic tones
+10. Nautical Red - Classic, maritime-inspired
+
 ## Getting Started
 
 First, run the development server:
