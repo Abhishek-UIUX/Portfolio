@@ -94,35 +94,51 @@ export default function AboutPage() {
                 style={{ backgroundColor: "#fca311", boxShadow: "0 0 8px rgba(252,163,17,0.5)" }}
               />
               <div
-                className="rounded-2xl p-6"
-                style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border)" }}
+                className="rounded-2xl p-6 relative overflow-hidden"
+                style={{ 
+                  background: "linear-gradient(135deg, rgba(255,140,66,0.08) 0%, rgba(20,33,61,0.2) 100%)",
+                  border: "1px solid var(--border)" 
+                }}
               >
-                <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
-                  <div>
-                    <h3 className="font-display font-bold text-base" style={{ color: "#ffffff" }}>
-                      {job.role}
-                    </h3>
-                    <p className="text-sm font-semibold" style={{ color: "#fca311" }}>{job.company}</p>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-xs font-mono-custom px-3 py-1 rounded-full"
-                    style={{ color: "var(--text-muted)", backgroundColor: "#000000", border: "1px solid var(--border)" }}>
-                    <Calendar size={11} />
-                    {job.period}
-                  </div>
+                {/* Animated background */}
+                <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                  <div className="absolute inset-0 grid-dot-bg opacity-10" />
+                  <motion.div
+                    className="absolute top-0 right-0 w-24 h-24 rounded-full blur-2xl"
+                    style={{ background: "radial-gradient(circle, rgba(255,140,66,0.12) 0%, transparent 70%)" }}
+                    animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                  />
                 </div>
-                <div className="flex items-center gap-2 mb-4 text-xs" style={{ color: "var(--text-muted)" }}>
-                  <MapPin size={11} />
-                  {job.location}
-                  <Badge color="muted">{job.duration}</Badge>
+                
+                <div className="relative z-10">
+                  <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
+                    <div>
+                      <h3 className="font-display font-bold text-base" style={{ color: "#ffffff" }}>
+                        {job.role}
+                      </h3>
+                      <p className="text-sm font-semibold" style={{ color: "#fca311" }}>{job.company}</p>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-xs font-mono-custom px-3 py-1 rounded-full"
+                      style={{ color: "var(--text-muted)", backgroundColor: "#000000", border: "1px solid var(--border)" }}>
+                      <Calendar size={11} />
+                      {job.period}
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mb-4 text-xs" style={{ color: "var(--text-muted)" }}>
+                    <MapPin size={11} />
+                    {job.location}
+                    <Badge color="muted">{job.duration}</Badge>
+                  </div>
+                  <ul className="space-y-2">
+                    {job.highlights.map((h) => (
+                      <li key={h} className="flex gap-2 text-sm" style={{ color: "#e5e5e5" }}>
+                        <span style={{ color: "#fca311" }} className="mt-0.5 flex-shrink-0">▸</span>
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="space-y-2">
-                  {job.highlights.map((h) => (
-                    <li key={h} className="flex gap-2 text-sm" style={{ color: "#e5e5e5" }}>
-                      <span style={{ color: "#fca311" }} className="mt-0.5 flex-shrink-0">▸</span>
-                      {h}
-                    </li>
-                  ))}
-                </ul>
               </div>
             </motion.div>
           ))}
@@ -131,8 +147,8 @@ export default function AboutPage() {
         {/* Education */}
         <div className="mb-10">
           <div className="flex items-center gap-3 mb-8">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: "rgba(90,126,179,0.12)" }}>
-              <GraduationCap size={16} style={{ color: "#7a9ccc" }} />
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: "rgba(79,195,247,0.12)" }}>
+              <GraduationCap size={16} style={{ color: "#4fc3f7" }} />
             </div>
             <h2 className="font-display font-bold text-2xl" style={{ color: "#ffffff" }}>
               Education
@@ -167,7 +183,7 @@ export default function AboutPage() {
               ] as const
             ).map(({ label, items, color }, idx) => (
               <BentoCard key={label} delay={idx * 0.06}>
-                <p className="text-xs font-semibold uppercase tracking-widest mb-3 font-mono-custom" style={{ color: color === "cyan" ? "#7a9ccc" : color === "muted" ? "var(--text-muted)" : "#fca311" }}>
+                <p className="text-xs font-semibold uppercase tracking-widest mb-3 font-mono-custom" style={{ color: color === "cyan" ? "#4fc3f7" : color === "muted" ? "var(--text-muted)" : "#fca311" }}>
                   {label}
                 </p>
                 <div className="flex flex-wrap gap-1.5">

@@ -53,24 +53,24 @@ export const projects: Project[] = [
     id: "sharedocs-enterpriser",
     title: "ShareDocs Enterpriser",
     role: "Team Lead",
-    stack: ["Next.js", "React.js", "Node.js", "MySQL"],
+    stack: ["Next.js", "React.js", "Laravel", "MySQL"],
     category: "web",
     featured: true,
-    tagline: "AI-first Enterprise Content Management System",
+    tagline: "Next-gen DMS with AI-powered document intelligence (In Development)",
     star: {
       situation:
-        "Enterprise clients needed a modern ECM replacing fragmented document workflows spread across email, shared drives, and legacy portals — no single source of truth, zero audit trail.",
+        "The existing DMS needed a major evolution — clients demanded AI-powered document classification, smarter workflows, and modern architecture to replace fragmented document management across email, shared drives, and legacy portals.",
       task:
-        "Architect and lead front-end development of an AI-first ECM platform capable of handling document ingestion, approval workflows, version control, and role-based access at enterprise scale.",
+        "Architect and lead front-end development of an enhanced version of DMS with AI-first capabilities, including intelligent document ingestion, automated classification, advanced approval workflows, version control, and role-based access at enterprise scale.",
       action:
-        "Designed a modular Next.js architecture with server components for SSR performance, integrated AI-based document classification, built a Rule Engine for dynamic workflow routing, and implemented an E-Sign PDF module — all as reusable microservices consumed across the platform.",
+        "Designing a modular Next.js architecture with server components for SSR performance, integrating AI-based document classification and intelligent routing, building an enhanced Rule Engine for dynamic workflow automation, and implementing advanced E-Sign PDF capabilities — all as reusable microservices consumed across the platform.",
       result:
-        "Delivered a production-ready ECM system adopted enterprise-wide, with document processing workflows that previously took hours now resolved in minutes. Zero post-launch critical bugs in first 90 days.",
+        "Currently in active development — building the next generation of enterprise content management with AI-powered features that will transform document processing workflows and enable intelligent automation across the platform.",
     },
     metrics: [
-      { label: "Workflow Time Reduction", value: "~80%" },
-      { label: "Critical Post-Launch Bugs", value: "0" },
-      { label: "Reusable Modules Shipped", value: "6+" },
+      { label: "Status", value: "In Development" },
+      { label: "AI Features", value: "Integrated" },
+      { label: "Architecture", value: "Enhanced DMS" },
     ],
     tradeoffs:
       "Chose SSR over full SPA to prioritize SEO and initial load time — trade-off was increased server complexity, mitigated by aggressive caching at the layout level.",
@@ -108,21 +108,21 @@ export const projects: Project[] = [
     stack: ["React Native", "Laravel", "MySQL"],
     category: "mobile",
     featured: true,
-    tagline: "Enterprise document workflow approvals on mobile",
+    tagline: "Native mobile app for enterprise document management",
     star: {
       situation:
-        "Field executives and managers needed to approve documents and access enterprise content on-the-go — desktop-only ECM was blocking business continuity outside office.",
+        "Field executives and managers needed to access and manage enterprise documents on-the-go — desktop-only ECM was blocking business continuity outside office.",
       task:
-        "Lead frontend development and mobile UI architecture for a cross-platform app serving both iOS and Android, integrated with the existing Laravel/MySQL backend.",
+        "Lead frontend development and mobile UI architecture for a cross-platform native app serving both iOS and Android, integrated with the existing Laravel/MySQL backend.",
       action:
-        "Built a React Native app with offline-capable document queuing, push notification approval flows, biometric auth, and a native-feeling document viewer. Designed reusable mobile UI components shared across DMS and CPAPP.",
+        "Built a React Native app with offline-capable document queuing, push notification flows, biometric auth, and a native-feeling document viewer. Designed reusable mobile UI components shared across DMS and CPAPP.",
       result:
-        "Enabled remote document approvals, cutting approval turnaround from 24h to under 2h for mobile users. App adopted by 200+ enterprise users at launch.",
+        "Created a mobile-native app that enabled users to easily manage enterprise documents from their phones, bringing full document management capabilities to mobile devices.",
     },
     metrics: [
-      { label: "Approval Turnaround", value: "24h → 2h" },
       { label: "Platforms", value: "iOS + Android" },
-      { label: "Launch Users", value: "200+" },
+      { label: "Architecture", value: "Native Mobile" },
+      { label: "Offline Support", value: "Yes" },
     ],
     tradeoffs:
       "React Native over Flutter — chosen for code-sharing with existing React.js codebase and team expertise. Trade-off was occasional native module debugging complexity.",

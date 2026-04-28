@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -76,7 +75,6 @@ export default function Navbar() {
 
         {/* Desktop actions */}
         <div className="hidden md:flex items-center gap-3">
-          <ThemeToggle />
           <a
             href="mailto:jaiswarabhishek2@gmail.com"
             className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 hover:opacity-85"
@@ -88,7 +86,6 @@ export default function Navbar() {
 
         {/* Mobile actions */}
         <div className="flex md:hidden items-center gap-2">
-          <ThemeToggle />
           <button
             className="p-2 rounded-lg transition-colors"
             style={{ color: "var(--text-secondary)" }}

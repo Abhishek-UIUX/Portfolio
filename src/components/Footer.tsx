@@ -1,13 +1,37 @@
 import Link from "next/link";
 import { Globe, ExternalLink, Mail, MapPin } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
     <footer
-      className="border-t py-14 mt-24"
-      style={{ borderColor: "var(--border)", backgroundColor: "#080d1a" }}
+      className="border-t py-14 mt-6 relative overflow-hidden"
+      style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-base)" }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      {/* Animated background */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 grid-dot-bg opacity-20" />
+        <motion.div
+          className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl"
+          style={{ background: "radial-gradient(circle, rgba(255,140,66,0.08) 0%, transparent 70%)" }}
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-0 left-0 w-80 h-80 rounded-full blur-3xl"
+          style={{ background: "radial-gradient(circle, rgba(20,33,61,0.15) 0%, transparent 70%)" }}
+          animate={{
+            scale: [1, 1.15, 1],
+            opacity: [0.4, 0.6, 0.4],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
 
           {/* Brand */}

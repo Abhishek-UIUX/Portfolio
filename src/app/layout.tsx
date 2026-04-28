@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import LoaderWrapper from "@/components/LoaderWrapper";
-import ThemeProvider from "@/components/ThemeProvider";
+import ClientLayout from "@/components/ClientLayout";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -49,25 +46,11 @@ export default function RootLayout({
       data-theme="dark"
       suppressHydrationWarning
     >
-      <head>
-        {/* Inject theme before paint — prevents flash */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('portfolio-theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')}catch(e){}})()`,
-          }}
-        />
-      </head>
       <body
         className="min-h-full flex flex-col theme-transition"
         style={{ backgroundColor: "var(--bg-base)", color: "var(--text-primary)" }}
       >
-        <ThemeProvider>
-          <LoaderWrapper>
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </LoaderWrapper>
-        </ThemeProvider>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

@@ -98,8 +98,8 @@ export default async function ProjectDetailPage({ params }: Props) {
 
         {/* Trade-off */}
         <div className="rounded-xl p-5 mb-8"
-          style={{ backgroundColor: "rgba(20,33,61,0.8)", border: "1px solid rgba(90,126,179,0.2)", borderLeft: "3px solid #7a9ccc" }}>
-          <p className="text-xs font-semibold uppercase tracking-widest mb-2 font-mono-custom" style={{ color: "#7a9ccc" }}>
+          style={{ backgroundColor: "rgba(20,33,61,0.8)", border: "1px solid rgba(79,195,247,0.2)", borderLeft: "3px solid #4fc3f7" }}>
+          <p className="text-xs font-semibold uppercase tracking-widest mb-2 font-mono-custom" style={{ color: "#4fc3f7" }}>
             ⚖ Architectural Trade-off
           </p>
           <p className="text-sm leading-relaxed" style={{ color: "#e5e5e5" }}>

@@ -23,8 +23,8 @@ const terminalScript: Line[] = [
   { type: "output", text: "}",                                                          color: "#5a6a90" },
   { type: "blank", text: "" },
   { type: "command", text: "ls projects/" },
-  { type: "output", text: "sharedocs-enterpriser  ckyc-revamp  dms-mobile-app",   color: "#7a9ccc" },
-  { type: "output", text: "aadhar-masking-tool    cpapp-mobile  asset-management", color: "#7a9ccc" },
+  { type: "output", text: "sharedocs-enterpriser  ckyc-revamp  dms-mobile-app",   color: "#4fc3f7" },
+  { type: "output", text: "aadhar-masking-tool    cpapp-mobile  asset-management", color: "#4fc3f7" },
   { type: "blank", text: "" },
   { type: "command", text: "git log --oneline -3" },
   { type: "output", text: "a3f1c2e feat: 3x perf boost on CKYC platform",      color: "#5a6a90" },
@@ -101,7 +101,7 @@ export default function Terminal() {
       </div>
 
       {/* Body */}
-      <div className="p-4 sm:p-5 font-mono-custom text-xs sm:text-sm leading-relaxed min-h-[240px] sm:min-h-[320px] overflow-x-auto">
+      <div className="p-4 sm:p-5 font-mono-custom text-xs sm:text-sm leading-relaxed min-h-[240px] sm:min-h-[320px]">
         {visibleLines.map((item, idx) => (
           <div key={idx} className="flex min-w-0">
             {item.line.type === "command" && (

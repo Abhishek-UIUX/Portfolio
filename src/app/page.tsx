@@ -6,6 +6,12 @@ import {
   ArrowRight, Zap, Code2, Layers, Smartphone,
   Server, GitBranch, ExternalLink, Mail, MapPin, Download,
 } from "lucide-react";
+import { 
+  SiNextdotjs, SiReact, SiNodedotjs, 
+  SiTypescript, SiPython, SiJavascript,
+  SiTailwindcss, SiPhp, SiAngular, SiIonic
+} from "react-icons/si";
+import { TbBrandReactNative } from "react-icons/tb";
 import Terminal from "@/components/Terminal";
 import BentoCard from "@/components/ui/BentoCard";
 import Badge from "@/components/ui/Badge";
@@ -20,123 +26,196 @@ export default function HomePage() {
     <div style={{ backgroundColor: "var(--bg-base)" }}>
 
       {/* ─── HERO ─── */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background */}
+      <section className="relative flex items-center overflow-hidden pt-32 pb-12 md:pt-40 md:pb-16">
+        {/* Enhanced Background with Multiple Layers */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 grid-dot-bg opacity-50" />
-          <div className="absolute top-[-20%] right-[-10%] w-[60vw] h-[70vh] rounded-full"
-            style={{ background: "radial-gradient(ellipse, rgba(20,33,61,0.9) 0%, transparent 70%)" }} />
-          <div className="absolute bottom-[-10%] left-[-5%] w-[40vw] h-[40vh]"
-            style={{ background: "radial-gradient(ellipse, rgba(252,163,17,0.06) 0%, transparent 70%)" }} />
+          {/* Animated gradient orbs */}
+          <motion.div 
+            className="absolute top-[-20%] right-[-10%] w-[60vw] h-[70vh] rounded-full blur-3xl"
+            style={{ background: "radial-gradient(ellipse, rgba(255,140,66,0.15) 0%, rgba(255,140,66,0.05) 40%, transparent 70%)" }}
+            animate={{ 
+              scale: [1, 1.1, 1],
+              opacity: [0.3, 0.5, 0.3]
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div 
+            className="absolute bottom-[-10%] left-[-5%] w-[50vw] h-[50vh] rounded-full blur-3xl"
+            style={{ background: "radial-gradient(ellipse, rgba(20,33,61,0.2) 0%, transparent 70%)" }}
+            animate={{ 
+              scale: [1, 1.15, 1],
+              opacity: [0.4, 0.6, 0.4]
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          />
+          
+          {/* Animated grid */}
+          <div className="absolute inset-0 grid-dot-bg opacity-40" />
+          
+          {/* Floating particles */}
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 rounded-full"
+              style={{ 
+                backgroundColor: "var(--accent-main)",
+                left: `${20 + i * 15}%`,
+                top: `${30 + (i % 3) * 20}%`,
+              }}
+              animate={{
+                y: [0, -30, 0],
+                opacity: [0.2, 0.6, 0.2],
+              }}
+              transition={{
+                duration: 3 + i * 0.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.3,
+              }}
+            />
+          ))}
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-16 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-            {/* Left */}
+            {/* Left - Enhanced Content */}
             <motion.div
               initial={{ opacity: 0, x: -24 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              {/* Status + location */}
-              <div className="flex flex-wrap items-center gap-3 mb-8">
+              {/* Status + location with enhanced styling */}
+              <div className="flex flex-wrap items-center gap-3 mb-5">
                 <motion.div
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-full font-semibold text-xs"
-                  style={{ backgroundColor: "#fca311", color: "#000000" }}
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-full font-semibold text-xs shadow-lg"
+                  style={{ 
+                    backgroundColor: "var(--accent-main)", 
+                    color: "var(--bg-base)",
+                    boxShadow: "0 0 20px rgba(255,140,66,0.3)"
+                  }}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.3 }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255,140,66,0.5)" }}
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />
+                  <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: "var(--bg-base)" }} />
                   Available for Opportunities
                 </motion.div>
-                <div className="flex items-center gap-1.5">
-                  <MapPin size={12} style={{ color: "var(--text-muted)" }} />
-                  <span className="text-xs font-mono-custom" style={{ color: "var(--text-muted)" }}>Mumbai, India</span>
-                </div>
+                <motion.div 
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-full"
+                  style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid var(--border)" }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <MapPin size={14} style={{ color: "var(--accent-main)" }} />
+                  <span className="text-xs font-mono-custom" style={{ color: "var(--text-secondary)" }}>Mumbai, India</span>
+                </motion.div>
               </div>
 
-              {/* Name */}
+              {/* Title section - compact */}
               <motion.div
-                className="mb-6"
+                className="mb-4"
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.7 }}
               >
-                <p className="text-xs font-mono-custom tracking-widest uppercase mb-4 flex items-center gap-2" style={{ color: "#fca311" }}>
-                  <span className="w-6 h-px inline-block" style={{ backgroundColor: "#fca311" }} />
+                <p className="text-xs font-mono-custom tracking-widest uppercase mb-3 flex items-center gap-2" style={{ color: "var(--accent-main)" }}>
+                  <span className="w-6 h-px inline-block" style={{ backgroundColor: "var(--accent-main)" }} />
                   Full Stack Developer · Team Lead · 7+ Years
                 </p>
-                <h1 className="font-display font-bold leading-[0.95] tracking-tight">
-                  <span className="block text-5xl md:text-6xl xl:text-7xl" style={{ color: "#ffffff" }}>
+                
+                {/* Name - compact sizing */}
+                <h1 className="font-display font-bold leading-tight tracking-tight mb-2">
+                  <span className="block text-4xl sm:text-5xl md:text-6xl" style={{ color: "var(--text-primary)" }}>
                     Abhishek
                   </span>
-                  <span className="block text-5xl md:text-6xl xl:text-7xl gradient-text">
+                  <span className="block text-4xl sm:text-5xl md:text-6xl" style={{ color: "var(--accent-main)" }}>
                     Jaiswar
                   </span>
                 </h1>
               </motion.div>
 
-              {/* Statement */}
+              {/* Statement - compact */}
               <motion.div
-                className="mb-8"
+                className="mb-5"
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
               >
-                <p className="text-lg font-medium leading-relaxed max-w-lg" style={{ color: "#e5e5e5" }}>
+                <p className="text-base font-semibold leading-relaxed max-w-lg mb-2" style={{ color: "var(--text-primary)" }}>
                   I don&apos;t just ship features —{" "}
-                  <span style={{ color: "#ffffff", fontWeight: 700 }}>I architect systems that scale.</span>
+                  <span style={{ color: "var(--accent-main)" }}>I architect systems that scale</span>
                 </p>
-                <p className="text-sm leading-relaxed max-w-lg mt-3" style={{ color: "var(--text-muted)" }}>
-                  Enterprise ECM platforms, cross-platform mobile apps, reusable component libraries.
-                  Always on time. Always production-ready.
+                <p className="text-sm leading-relaxed max-w-lg" style={{ color: "var(--text-secondary)" }}>
+                  Enterprise ECM • Mobile apps • Component libraries • Always on time.
                 </p>
               </motion.div>
 
-              {/* CTAs */}
+              {/* CTAs - compact */}
               <motion.div
-                className="flex flex-col sm:flex-row sm:items-center gap-3 mb-10"
+                className="flex flex-col sm:flex-row sm:items-center gap-3 mb-6"
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.55, duration: 0.5 }}
               >
                 <Link
                   href="/projects"
-                  className="group flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-sm transition-all duration-200 hover:opacity-85 hover:scale-[1.02]"
-                  style={{ backgroundColor: "#fca311", color: "#000000" }}
+                  className="group flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-sm transition-all duration-200 hover:scale-[1.02]"
+                  style={{ backgroundColor: "var(--accent-main)", color: "var(--bg-base)" }}
                 >
                   View Projects
-                  <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <a
                   href="mailto:jaiswarabhishek2@gmail.com"
-                  className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 hover:border-white/40"
-                  style={{ border: "1px solid var(--border)", color: "var(--text-secondary)", backgroundColor: "var(--bg-card)" }}
+                  className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200"
+                  style={{ border: "1px solid var(--border-hover)", color: "var(--text-primary)", backgroundColor: "var(--bg-card)" }}
                 >
-                  <Mail size={15} /> Get in Touch
+                  <Mail size={16} /> Get in Touch
                 </a>
                 <a
                   href="/Abhishek_Jaiswar_Full_Stack_Developer_Team_Lead_27_02_2026.pdf"
                   download
-                  className="flex items-center justify-center gap-1.5 text-xs transition-colors hover:text-white"
-                  style={{ color: "var(--text-muted)" }}
+                  className="flex items-center justify-center gap-2 text-sm font-medium transition-colors"
+                  style={{ color: "var(--text-secondary)" }}
                 >
-                  <Download size={13} /> Resume
+                  <Download size={14} /> Resume
                 </a>
               </motion.div>
 
-              {/* Tech strip */}
+              {/* Tech stack - compact */}
               <motion.div
-                className="flex flex-wrap gap-x-5 gap-y-2"
+                className="flex flex-wrap gap-2"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.75 }}
               >
-                {["Next.js", "React.js", "React Native", "Node.js", "TypeScript", "Python"].map((t, i) => (
-                  <span key={t} className="text-xs font-mono-custom" style={{ color: i % 2 === 0 ? "var(--text-muted)" : "#e5e5e5" }}>
-                    {t}
+                {[
+                  { name: "Next.js", icon: <SiNextdotjs size={14} /> },
+                  { name: "React.js", icon: <SiReact size={14} /> },
+                  { name: "React Native", icon: <TbBrandReactNative size={16} /> },
+                  { name: "Angular", icon: <SiAngular size={14} /> },
+                  { name: "Ionic", icon: <SiIonic size={14} /> },
+                  { name: "Node.js", icon: <SiNodedotjs size={14} /> },
+                  { name: "JavaScript", icon: <SiJavascript size={14} /> },
+                  { name: "TypeScript", icon: <SiTypescript size={14} /> },
+                  { name: "Tailwind", icon: <SiTailwindcss size={14} /> },
+                  { name: "Python", icon: <SiPython size={14} /> },
+                  { name: "PHP", icon: <SiPhp size={14} /> },
+                ].map((tech) => (
+                  <span
+                    key={tech.name}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono-custom font-medium transition-all duration-200 hover:scale-105"
+                    style={{
+                      backgroundColor: "var(--bg-card)",
+                      border: "1px solid var(--border)",
+                      color: "var(--text-secondary)",
+                    }}
+                  >
+                    {tech.icon}
+                    {tech.name}
                   </span>
                 ))}
               </motion.div>
@@ -152,20 +231,20 @@ export default function HomePage() {
               <div
                 className="absolute inset-0 rounded-2xl blur-3xl pointer-events-none"
                 style={{
-                  background: "radial-gradient(ellipse, rgba(252,163,17,0.12) 0%, rgba(20,33,61,0.3) 50%, transparent 80%)",
+                  background: "radial-gradient(ellipse, rgba(255,140,66,0.15) 0%, rgba(20,33,61,0.3) 50%, transparent 80%)",
                   transform: "scale(1.15)",
                   zIndex: -1,
                 }}
               />
               <Terminal />
               <motion.div
-                className="absolute -top-3 -right-3 px-3 py-1.5 rounded-full text-xs font-mono-custom font-bold hidden sm:flex items-center gap-1.5"
-                style={{ backgroundColor: "#fca311", color: "#000000" }}
+                className="absolute -top-3 -right-3 px-3 py-2 rounded-full text-xs font-mono-custom font-bold hidden sm:flex items-center gap-2"
+                style={{ backgroundColor: "var(--accent-main)", color: "var(--bg-base)" }}
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2 }}
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />
+                <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: "var(--bg-base)" }} />
                 live
               </motion.div>
             </motion.div>
@@ -175,7 +254,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── CONTENT ─── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         {/* STATS */}
         <section className="mb-6">
@@ -237,14 +316,14 @@ export default function HomePage() {
             <div className="col-span-12 md:col-span-5 lg:col-span-4 flex flex-col gap-4">
               {[
                 { icon: <Code2 size={16} style={{ color: "#fca311" }} />, label: "Frontend", items: techStack.frontend },
-                { icon: <Server size={16} style={{ color: "#7a9ccc" }} />, label: "Backend", items: [...techStack.backend, ...techStack.auth], color: "cyan" as const },
+                { icon: <Server size={16} style={{ color: "#4fc3f7" }} />, label: "Backend", items: [...techStack.backend, ...techStack.auth], color: "cyan" as const },
                 { icon: <Smartphone size={16} style={{ color: "#fca311" }} />, label: "Mobile", items: techStack.mobile },
               ].map(({ icon, label, items, color = "violet" as const }, i) => (
                 <BentoCard key={label} delay={0.15 + i * 0.05}>
                   <div className="flex items-center gap-2 mb-3">
                     {icon}
                     <p className="text-xs font-semibold uppercase tracking-wider font-mono-custom"
-                      style={{ color: color === "cyan" ? "#7a9ccc" : "#fca311" }}>
+                      style={{ color: color === "cyan" ? "#4fc3f7" : "#fca311" }}>
                       {label}
                     </p>
                   </div>
@@ -367,47 +446,115 @@ export default function HomePage() {
           </BentoCard>
         </section>
 
-        {/* CTA */}
+        {/* Enhanced CTA Section */}
         <section>
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="rounded-2xl p-10 md:p-16 text-center relative overflow-hidden"
+            transition={{ duration: 0.6 }}
+            className="relative overflow-hidden rounded-3xl"
             style={{
-              backgroundColor: "#14213d",
+              background: "linear-gradient(135deg, rgba(255,140,66,0.1) 0%, rgba(20,33,61,0.3) 100%)",
               border: "1px solid var(--border)",
-              borderTop: "3px solid #fca311",
             }}
           >
-            <div className="absolute inset-0 grid-dot-bg opacity-30 pointer-events-none" />
-            <div className="relative z-10">
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-6"
-                style={{ backgroundColor: "#fca311" }}>
-                <Zap size={22} color="#000000" />
-              </div>
-              <h2 className="font-display font-bold text-3xl md:text-4xl mb-4 gradient-text">
-                Let&apos;s build something great
-              </h2>
-              <p className="text-base mb-8 max-w-md mx-auto" style={{ color: "#e5e5e5" }}>
-                Open to full-time roles, freelance contracts, and interesting technical challenges.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                <a
-                  href="mailto:jaiswarabhishek2@gmail.com"
-                  className="flex items-center gap-2 px-8 py-3 rounded-xl font-bold text-sm hover:opacity-85 transition-opacity w-full sm:w-auto justify-center"
-                  style={{ backgroundColor: "#fca311", color: "#000000" }}
+            {/* Animated background elements */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              <div className="absolute inset-0 grid-dot-bg opacity-20" />
+              <motion.div
+                className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl"
+                style={{ background: "radial-gradient(circle, rgba(255,140,66,0.15) 0%, transparent 70%)" }}
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.5, 0.3],
+                }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.div
+                className="absolute bottom-0 left-0 w-80 h-80 rounded-full blur-3xl"
+                style={{ background: "radial-gradient(circle, rgba(20,33,61,0.2) 0%, transparent 70%)" }}
+                animate={{
+                  scale: [1, 1.15, 1],
+                  opacity: [0.4, 0.6, 0.4],
+                }}
+                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              />
+            </div>
+
+            <div className="relative z-10 p-6 md:p-12">
+              <div className="max-w-4xl mx-auto">
+                {/* Header section - compact */}
+                <div className="text-center mb-8">
+                  <motion.div
+                    className="inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-4"
+                    style={{ backgroundColor: "var(--accent-main)" }}
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, type: "spring" }}
+                  >
+                    <Zap size={24} color="var(--bg-base)" />
+                  </motion.div>
+                  
+                  <motion.h2 
+                    className="font-display font-bold text-2xl md:text-4xl mb-3"
+                    style={{ color: "var(--text-primary)" }}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1 }}
+                  >
+                    Let&apos;s Build Something{" "}
+                    <span style={{ color: "var(--accent-main)" }}>Exceptional</span>
+                  </motion.h2>
+                  
+                  <motion.p 
+                    className="text-sm md:text-base max-w-2xl mx-auto"
+                    style={{ color: "var(--text-secondary)" }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    Open to full-time roles, freelance contracts, and technical challenges.
+                  </motion.p>
+                </div>
+
+                {/* CTA buttons */}
+                <motion.div 
+                  className="flex flex-col sm:flex-row items-center justify-center gap-3"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
                 >
-                  <Mail size={16} /> Email Me
-                </a>
-                <Link
-                  href="/contact"
-                  className="flex items-center justify-center gap-2 px-8 py-3 rounded-xl font-semibold text-sm w-full sm:w-auto"
-                  style={{ border: "1px solid rgba(255,255,255,0.15)", color: "#e5e5e5" }}
-                >
-                  Contact Form <ArrowRight size={16} />
-                </Link>
+                  <a
+                    href="mailto:jaiswarabhishek2@gmail.com"
+                    className="group flex items-center gap-2 px-7 py-3 rounded-xl font-bold text-sm w-full sm:w-auto justify-center transition-all duration-200 hover:scale-105"
+                    style={{ 
+                      backgroundColor: "var(--accent-main)", 
+                      color: "var(--bg-base)"
+                    }}
+                  >
+                    <Mail size={16} />
+                    Email Me
+                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  </a>
+                  
+                  <Link
+                    href="/contact"
+                    className="flex items-center justify-center gap-2 px-7 py-3 rounded-xl font-semibold text-sm w-full sm:w-auto transition-all duration-200 hover:scale-105"
+                    style={{ 
+                      border: "1px solid var(--border)", 
+                      color: "var(--text-primary)",
+                      backgroundColor: "rgba(255,255,255,0.03)"
+                    }}
+                  >
+                    Contact Form
+                    <ArrowRight size={16} />
+                  </Link>
+                </motion.div>
               </div>
             </div>
           </motion.div>

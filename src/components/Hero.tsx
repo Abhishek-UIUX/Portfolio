@@ -4,6 +4,13 @@ import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Mail, MapPin, ChevronDown } from "lucide-react";
+import { 
+  SiNextdotjs, SiReact, SiNodedotjs, 
+  SiTypescript, SiPython, SiJavascript,
+  SiTailwindcss, SiPhp, SiAngular, SiIonic,
+  SiLaravel
+} from "react-icons/si";
+import { TbBrandReactNative } from "react-icons/tb";
 
 const WORDS = ["architect", "engineer", "lead", "build"];
 
@@ -230,10 +237,11 @@ export default function Hero() {
               className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
               style={{ color: "var(--text-primary)" }}
             >
-              Abhishek
+              Abhishekrgr
             </span>
             <span
-              className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl gradient-text mt-1"
+              className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mt-1"
+              style={{ color: "#ff8c42" }}
             >
               Jaiswar
             </span>
@@ -312,21 +320,35 @@ export default function Hero() {
           </Link>
         </motion.div>
 
-        {/* Tech strip */}
+        {/* Tech stack */}
         <motion.div
-          className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2"
+          className="flex flex-wrap items-center justify-center gap-2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 1.0 }}
         >
-          {["Next.js", "React.js", "React Native", "Node.js", "TypeScript", "Python", "Laravel"].map((tech, i) => (
+          {[
+            { name: "Next.js", icon: <SiNextdotjs size={12} /> },
+            { name: "React.js", icon: <SiReact size={12} /> },
+            { name: "React Native", icon: <TbBrandReactNative size={14} /> },
+            { name: "Angular", icon: <SiAngular size={12} /> },
+            { name: "Ionic", icon: <SiIonic size={12} /> },
+            { name: "Node.js", icon: <SiNodedotjs size={12} /> },
+            { name: "JavaScript", icon: <SiJavascript size={12} /> },
+            { name: "TypeScript", icon: <SiTypescript size={12} /> },
+            { name: "Tailwind CSS", icon: <SiTailwindcss size={12} /> },
+            { name: "Python", icon: <SiPython size={12} /> },
+            { name: "PHP", icon: <SiPhp size={12} /> },
+            { name: "Laravel", icon: <SiLaravel size={12} /> },
+          ].map((tech, i) => (
             <span
-              key={tech}
-              className="text-xs font-mono-custom"
-              style={{ color: i % 2 === 0 ? "var(--text-muted)" : "var(--text-secondary)" }}
+              key={tech.name}
+              className="flex items-center gap-1 text-xs font-mono-custom"
+              style={{ color: "var(--text-secondary)" }}
             >
-              {tech}
-              {i < 6 && <span style={{ color: "var(--border-hover)", marginLeft: "6px" }}>·</span>}
+              {tech.icon}
+              {tech.name}
+              {i < 11 && <span style={{ color: "var(--accent-main)", marginLeft: "4px" }}>·</span>}
             </span>
           ))}
         </motion.div>

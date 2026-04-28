@@ -3,13 +3,13 @@ type Props = {
   color?: "violet" | "cyan" | "green" | "coral" | "muted";
 };
 
-/* All warm accents → orange. All cool/muted → navy-blue. */
+/* All warm accents → orange. Cyan → bright blue. Muted → brighter gray-blue. */
 const colorMap = {
   violet: { bg: "rgba(252,163,17,0.12)", color: "#fca311",  border: "rgba(252,163,17,0.30)" },
   coral:  { bg: "rgba(252,163,17,0.12)", color: "#fca311",  border: "rgba(252,163,17,0.30)" },
   green:  { bg: "rgba(252,163,17,0.10)", color: "#fca311",  border: "rgba(252,163,17,0.25)" },
-  cyan:   { bg: "rgba(90,126,179,0.14)", color: "#7a9ccc",  border: "rgba(90,126,179,0.30)" },
-  muted:  { bg: "rgba(20,33,61,0.60)",   color: "#8a9ab8",  border: "rgba(30,48,96,0.50)"   },
+  cyan:   { bg: "rgba(79,195,247,0.12)", color: "#4fc3f7",  border: "rgba(79,195,247,0.30)" },
+  muted:  { bg: "rgba(255,255,255,0.08)", color: "#b8c5d6", border: "rgba(255,255,255,0.15)" },
 };
 
 export default function Badge({ children, color = "muted" }: Props) {

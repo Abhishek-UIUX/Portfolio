@@ -72,8 +72,8 @@ export default function ComponentsShowcasePage() {
                 <div
                   className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
                   style={{
-                    backgroundColor: isOrange ? "rgba(252,163,17,0.10)" : "rgba(90,126,179,0.12)",
-                    color: isOrange ? "#fca311" : "#7a9ccc",
+                    backgroundColor: isOrange ? "rgba(252,163,17,0.10)" : "rgba(79,195,247,0.12)",
+                    color: isOrange ? "#fca311" : "#4fc3f7",
                   }}
                 >
                   {iconMap[comp.icon] ?? <LayoutGrid size={22} />}
